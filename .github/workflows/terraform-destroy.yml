@@ -7,6 +7,12 @@ on:
         description: "Type 'destroy' to confirm"
         required: true
 
+env:
+  AWS_REGION: us-east-1
+  TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
+  TF_VERSION: 1.6.6
+  PYTHON_VERSION: 3.11
+
 jobs:
   terraform-destroy:
     if: github.event.inputs.confirm == 'destroy'
@@ -21,7 +27,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v2
+      uses: aws-actions/configure-aws-credentials@v3
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
