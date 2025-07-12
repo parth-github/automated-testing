@@ -2,9 +2,11 @@ import boto3
 from moto import mock_ecs
 import pytest
 
+region_name='us-east-1'
+
 @mock_ecs
 def test_create_and_describe_service():
-    ecs = boto3.client("ecs", region_name="us-east-1")
+    ecs = boto3.client("ecs", region_name=region_name)
 
     # Create a cluster
     cluster = ecs.create_cluster(clusterName="test-cluster")
