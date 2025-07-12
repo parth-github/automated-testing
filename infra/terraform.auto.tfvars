@@ -1,0 +1,15 @@
+project_name = "ecs-automated-testing"
+# aws_region = "us-east-1" # Default region can be overridden in terraform.tfvars
+# ecs_cluster_name = "automated-testing-fargate-cluster"
+# nginx_containerPort = 80
+# nginx_hostPort = 80
+# nginx_protocol = "tcp"
+subnets           = ["subnet-09eb2d7b54c56ffd8"] # Replace with your subnet ID subnet-09eb2d7b54c56ffd8
+security_groups   = ["sg-06d8730202d2fa529"] # Replace with your security group ID sg-06d8730202d2fa529
+vpc_id            = "vpc-0964470d99d048dc1"      # Replace with your VPC ID vpc-0964470d99d048dc1
+public_subnet_ids = ["subnet-09eb2d7b54c56ffd8"] # Replace with your public subnet IDs
+#internet_gateway_id = "igw-0c66c4555bad6c371" # Replace with your Internet Gateway ID
+#rtb_id = "rtb-0e4a832d8912badea" # Replace with your Route Table ID
+#nacl_id = "acl-0ac24d1b148e5d160" # Replace with your Network ACL ID
+#sgr_ingress_id = "sgr-059390466e78b0bb1" # Replace with your Security Group Ingress ID
+#sgr_egress_id = "sgr-04bf0a66bc14668c4" # Replace with your Security Group Egress ID
