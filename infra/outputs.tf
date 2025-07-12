@@ -17,9 +17,9 @@ output "ecs_log_group_arn" {
 output "ecs_task_execution_role_policy_attachment" {
   value = aws_iam_role_policy_attachment.ecs_task_execution_role_policy.id
 }
-output "ecs_security_group_arn" {
-  value = aws_security_group.ecs-sg.arn
-}
+# output "ecs_security_group_arn" {
+#   value = aws_security_group.ecs-sg.arn
+# }
 # output "alb_target_group_arn" {
 #   value = aws_lb_target_group.app.arn
 # }
