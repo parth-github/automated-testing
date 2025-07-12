@@ -10,7 +10,7 @@ resource "aws_kms_key" "cloudwatch_logs" {
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "*"
+        "AWS": "arn:aws:iam::${var.aws_account_id}:role/ecsTaskExecutionRole"
       },
       "Action": [
         "kms:Encrypt",

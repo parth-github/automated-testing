@@ -3,6 +3,13 @@ variable "project_name" {
   description = "The name of the project."
   default     = "ecs-automated-testing" # Default project name can be overridden in terraform.tfvars
 }
+variable "aws_account_id" {
+  type        = string
+  description = "The AWS account ID where the ECS cluster will be deployed."
+  default     = "177099687008" # Replace with your actual AWS account ID or override in terraform.tfvars
+
+}
+
 variable "aws_region" {
   type        = string
   description = "The AWS region where the ECS cluster will be deployed."
