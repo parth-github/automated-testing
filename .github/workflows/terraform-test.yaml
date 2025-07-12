@@ -153,13 +153,12 @@ jobs:
     needs: validate
     steps:
       - uses: actions/checkout@v3
-.
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
         with:
           projectBaseDir: .
-          sonar.ProjectKey: automated-testing
-          sonar.Organization: parth-github
+          projectKey: automated-testing
+          organization: parth-github
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
