@@ -67,10 +67,10 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run Component Tests
-        run: pytest tests\component\
+        run: pytest tests/component/
 
       - name: Run Contract Tests
-        run: pytest tests\contract\
+        run: pytest tests/contract/
 
   # 3. Integration & Deployment Plan
   plan-integration:
@@ -153,14 +153,14 @@ jobs:
     needs: validate
     steps:
       - uses: actions/checkout@v3
-
+.
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
         with:
           projectBaseDir: .
+          sonar.ProjectKey: automated-testing
+          sonar.Organization: parth-github
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-          SONAR_PROJECT_KEY: automated-testing
-          SONAR_ORGANIZATION: parth-github
 
