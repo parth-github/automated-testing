@@ -27,11 +27,11 @@ variable "subnets" {
 
 }
 
-# variable "security_groups" {
-#   type        = list(string)
-#   description = "The IDs of the security groups to associate with the ECS tasks."
-#   # overridden in terraform.tfvars
-# }
+variable "security_groups" {
+  type        = list(string)
+  description = "The IDs of the security groups to associate with the ECS tasks."
+  # overridden in terraform.tfvars
+}
 
 variable "public_subnet_ids" {
   type        = list(string)
