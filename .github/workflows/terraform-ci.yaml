@@ -19,7 +19,7 @@ jobs:
   validate-plan:
     name: Terraform Validate & Plan
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
+    # if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v3
 
@@ -50,7 +50,7 @@ jobs:
   apply-on-main:
     name: Terraform Apply
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    # if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     needs: validate-plan
     steps:
       - uses: actions/checkout@v3
@@ -69,7 +69,7 @@ jobs:
   destroy-on-delete:
     name: Terraform Destroy
     runs-on: ubuntu-latest
-    if: github.event_name == 'delete' && github.event.ref_type == 'branch' && github.event.ref == 'main'
+    # if: github.event_name == 'delete' && github.event.ref_type == 'branch' && github.event.ref == 'main'
     steps:
       - uses: actions/checkout@v3
 
