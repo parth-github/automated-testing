@@ -4,3 +4,4 @@ requests
 botocore
 pydantic
 behave
+moto
