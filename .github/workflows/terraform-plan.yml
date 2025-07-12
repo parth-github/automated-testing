@@ -1,9 +1,11 @@
 name: Terraform Plan (PR Review)
 
 on:
-  pull_request:
-    paths:
-      - 'infra/**'
+  push:
+    # paths:
+    #   - 'infra/**'
+    branches:
+      - develop
 
 env:
   TF_WORKSPACE: automated-testing
