@@ -1,5 +1,9 @@
 resource "aws_ecs_cluster" "ecs-cluster" {
   name = "${var.project_name}_cluster"
+   setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
 }
 
 resource "aws_ecs_task_definition" "ecs-task" {
@@ -44,7 +48,7 @@ resource "aws_ecs_service" "ecs-service" {
   network_configuration {
     subnets          = var.subnets
     security_groups  = var.security_groups
-    assign_public_ip = true
+    assign_public_ip = false
   }
 }
 
