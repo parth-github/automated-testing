@@ -13,9 +13,9 @@ output "ecs_task_definition_arn" {
 output "ecs_security_group_id" {
   value = aws_security_group.ecs.id
 }
-output "alb_target_group_arn" {
-  value = aws_lb_target_group.app.arn
-}
+# output "alb_target_group_arn" {
+#   value = aws_lb_target_group.app.arn
+# }
 output "alb_listener_arn" {
   value = aws_lb_listener.http.arn
 }
