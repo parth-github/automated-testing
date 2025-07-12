@@ -2,7 +2,7 @@ name: EAC CI Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ develop, master ]
 
 jobs:
   validate-deploy:
