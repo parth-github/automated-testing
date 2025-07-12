@@ -48,12 +48,6 @@ jobs:
 
     - name: Terraform Plan
       id: plan
-      run: terraform plan -out=tfplan
-
-    - name: Upload Plan as Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: terraform-plan
-        path: infra/tfplan
+      run: terraform plan
 
    
