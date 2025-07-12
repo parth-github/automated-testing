@@ -1,0 +1,6 @@
+boto3
+pytest
+requests 
+botocore
+pydantic
+behave
