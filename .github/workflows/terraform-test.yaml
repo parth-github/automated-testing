@@ -46,7 +46,7 @@ jobs:
       - name: Run Checkov (Security)
         uses: bridgecrewio/checkov-action@master
         with:
-          directory: .
+          directory: infra
       
       - name: Run tfsec (Security)
         uses: aquasecurity/tfsec-action@v1.0.0
