@@ -3,8 +3,8 @@ import pytest
 
 ecs = boto3.client('ecs')
 
-CLUSTER_NAME = "your-ecs-cluster"
-SERVICE_NAME = "your-ecs-service"
+CLUSTER_NAME = "ecs-automated-testing_cluster"
+SERVICE_NAME = "ecs-automated-testing_ecs-service"
 
 def test_ecs_service_exists():
     services = ecs.list_services(cluster=CLUSTER_NAME)
