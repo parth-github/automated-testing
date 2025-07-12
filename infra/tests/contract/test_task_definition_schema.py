@@ -5,7 +5,7 @@ class TaskDefinitionContract(BaseModel):
     family: str
     cpu: conint(gt=0)
     memory: conint(gt=0)
-    networkMode: constr(regex='^(awsvpc|bridge|host)$')
+    networkMode: constr(pattern='^(awsvpc|bridge|host)$')
     taskRoleArn: str
     containerDefinitions: list
 
