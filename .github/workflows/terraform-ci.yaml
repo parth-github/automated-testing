@@ -30,6 +30,7 @@ jobs:
 
       - name: Terraform Init (TFC Backend)
         run: |
+          cd infra
           terraform init
 
       - name: Terraform Format Check
@@ -66,21 +67,21 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve
 
-  destroy-on-delete:
-    name: Terraform Destroy
-    runs-on: ubuntu-latest
-    # if: github.event_name == 'delete' && github.event.ref_type == 'branch' && github.event.ref == 'main'
-    steps:
-      - uses: actions/checkout@v3
+  # destroy-on-delete:
+  #   name: Terraform Destroy
+  #   runs-on: ubuntu-latest
+  #   # if: github.event_name == 'delete' && github.event.ref_type == 'branch' && github.event.ref == 'main'
+  #   steps:
+  #     - uses: actions/checkout@v3
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: ${{ env.TF_VERSION }}
+  #     - name: Setup Terraform
+  #       uses: hashicorp/setup-terraform@v3
+  #       with:
+  #         terraform_version: ${{ env.TF_VERSION }}
 
-      - name: Terraform Init (TFC)
-        run: |
-          terraform init
+  #     - name: Terraform Init (TFC)
+  #       run: |
+  #         terraform init
 
-      - name: Terraform Destroy
-        run: terraform destroy -auto-approve
+  #     - name: Terraform Destroy
+  #       run: terraform destroy -auto-approve
