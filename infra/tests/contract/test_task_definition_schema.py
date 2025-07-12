@@ -10,7 +10,7 @@ class TaskDefinitionContract(BaseModel):
     containerDefinitions: list
 
 def test_task_definition_contract():
-    with open("artifacts\\task_def.json") as f:
+    with open("task_def.json") as f:
         data = json.load(f)
     TaskDefinitionContract.model_validate(data)
 
