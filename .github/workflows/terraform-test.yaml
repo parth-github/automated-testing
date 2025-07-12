@@ -54,7 +54,11 @@ jobs:
   # 2. Component & Contract Tests
   component:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infra
     needs: validate
+
     steps:
       - uses: actions/checkout@v3
 
@@ -76,6 +80,9 @@ jobs:
   plan-integration:
     runs-on: ubuntu-latest
     needs: component
+    defaults:
+      run:
+        working-directory: infra
     steps:
       - uses: actions/checkout@v3
 
@@ -97,6 +104,9 @@ jobs:
   deploy-and-test:
     runs-on: ubuntu-latest
     needs: plan-integration
+    defaults:
+      run:
+        working-directory: infra
     steps:
       - uses: actions/checkout@v3
 
@@ -127,6 +137,9 @@ jobs:
   blue-green:
     runs-on: ubuntu-latest
     needs: deploy-and-test
+    defaults:
+      run:
+        working-directory: infra
     steps:
       - uses: actions/checkout@v3
 
@@ -137,15 +150,15 @@ jobs:
         run: python scripts/health_check.py
 
   # 6. Rollback if Health Check Fails
-  rollback:
-    runs-on: ubuntu-latest
-    needs: blue-green
-    if: failure()
-    steps:
-      - uses: actions/checkout@v3
+  # rollback:
+  #   runs-on: ubuntu-latest
+  #   needs: blue-green
+  #   if: failure()
+  #   steps:
+  #     - uses: actions/checkout@v3
 
-      - name: Rollback to Blue
-        run: terraform apply -var="deployment_color=blue" -auto-approve
+  #     - name: Rollback to Blue
+  #       run: terraform apply -var="deployment_color=blue" -auto-approve
 
   # 7. SonarQube Analysis
   sonar:
@@ -157,8 +170,8 @@ jobs:
         uses: sonarsource/sonarqube-scan-action@master
         with:
           projectBaseDir: .
-          projectKey: automated-testing
-          organization: parth-github
+          sonar.projectKey: automated-testing
+          sonar.organization: parth-github
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
