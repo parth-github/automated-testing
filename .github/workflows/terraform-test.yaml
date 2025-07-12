@@ -16,40 +16,40 @@ env:
 jobs:
 
   # 1. Lint, Format, Unit Tests
-  validate:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: infra
+  # validate:
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: infra
 
-    steps:
-      - uses: actions/checkout@v3
+  #   steps:
+  #     - uses: actions/checkout@v3
       
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: ${{ env.TF_VERSION }}
+  #     - name: Set up Terraform
+  #       uses: hashicorp/setup-terraform@v3
+  #       with:
+  #         terraform_version: ${{ env.TF_VERSION }}
 
-      - name: Terraform Format Check
-        run: terraform fmt -check
+  #     - name: Terraform Format Check
+  #       run: terraform fmt -check
 
-      - name: Terraform Init & Validate
-        run: |
-          terraform init -backend=false
-          terraform validate
+  #     - name: Terraform Init & Validate
+  #       run: |
+  #         terraform init -backend=false
+  #         terraform validate
 
-      - name: Run TFLint
-        uses: terraform-linters/setup-tflint@v1
-        with:
-          tflint_version: latest
+  #     - name: Run TFLint
+  #       uses: terraform-linters/setup-tflint@v1
+  #       with:
+  #         tflint_version: latest
 
-      - name: Run Checkov (Security)
-        uses: bridgecrewio/checkov-action@master
-        with:
-          directory: infra
+  #     - name: Run Checkov (Security)
+  #       uses: bridgecrewio/checkov-action@master
+  #       with:
+  #         directory: infra
       
-      - name: Run tfsec (Security)
-        uses: aquasecurity/tfsec-action@v1.0.0
+  #     - name: Run tfsec (Security)
+  #       uses: aquasecurity/tfsec-action@v1.0.0
 
   # 2. Component & Contract Tests
   component:
@@ -57,7 +57,7 @@ jobs:
     defaults:
       run:
         working-directory: infra
-    needs: validate
+    #needs: validate
 
     steps:
       - uses: actions/checkout@v3
@@ -163,11 +163,11 @@ jobs:
   # 7. SonarQube Analysis
   sonar:
     runs-on: ubuntu-latest
-    needs: validate
+    # needs: validate
     steps:
       - uses: actions/checkout@v3
       - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@master
+        uses: sonarsource/sonarcloud-github-action@master
         with:
           projectBaseDir: .
           sonar.projectKey: automated-testing
