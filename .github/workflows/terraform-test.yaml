@@ -87,6 +87,10 @@ jobs:
         working-directory: infra
     steps:
       - uses: actions/checkout@v3
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
 
       - name: Terraform Init & Plan
         run: |
