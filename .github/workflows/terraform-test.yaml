@@ -91,13 +91,7 @@ jobs:
       - name: Terraform Init & Plan
         run: |
           terraform init
-          terraform plan -out=tfplan
-
-      - name: Upload tfplan
-        uses: actions/upload-artifact@v3
-        with:
-          name: tfplan
-          path: tfplan
+          terraform plan
 
       - name: Run Integration Tests
         run: pytest tests/integration/
